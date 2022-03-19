@@ -1,8 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 import bcrypt from 'bcrypt';
 // import jwt from 'jsonwebtoken';
 import Donar from '../../model/Donar';
-import generateToken from '../../utils/generateToken';
 import connectDb from '../../utils/connectDB';
+import generateToken from '../../utils/generateToken';
 
 connectDb();
 const isPasswordMatch = (password, donarPassword) => {

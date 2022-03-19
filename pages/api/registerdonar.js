@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import bcrypt from 'bcrypt';
 import Donar from '../../model/Donar';
 import connectDb from '../../utils/connectDB';
@@ -36,6 +37,7 @@ const registerDonar = async (req, res) => {
         });
 
         if (donar) {
+            // eslint-disable-next-line no-unsafe-optional-chaining
             const { password: sectet, ...othersInfo } = donar?._doc;
             res.json({
                 donar: othersInfo,
