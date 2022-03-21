@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import district from '../data/district';
 import group from '../data/group';
+import upazila from '../data/upazila';
 
 export const searchDonar = (info) => {
     return axios.post('/api/donars', info, {
@@ -13,12 +14,18 @@ export const searchDonar = (info) => {
 };
 
 function Search({ mutate }) {
-    const [info, setInfo] = useState({ group: '', district: '' });
+    const [currentDistrict, setCurrentDistrict] = useState(null);
+    const [info, setInfo] = useState({ group: '', district: '', upazila: '' });
     const handleSubmit = (e) => {
         e.preventDefault();
 
         mutate(info);
     };
+
+    const filteredUpazila = () => {
+        return upazila.filter((dt) => dt.district_id === currentDistrict?.id);
+    };
+
     return (
         <div className="min-h-[50vh] flex justify-center flex-col items-center">
             <div className="text-center text-2xl font-bold uppercase tracking-wider text-slate-500 my-5">
@@ -32,7 +39,10 @@ function Search({ mutate }) {
                         placeholder="Enter District"
                         instanceId="group"
                         options={district}
-                        onChange={(e) => setInfo({ ...info, district: e.value })}
+                        onChange={(e) => {
+                            setInfo({ ...info, district: e.value });
+                            setCurrentDistrict(e);
+                        }}
                     />
                     <input
                         type="text"
@@ -40,6 +50,23 @@ function Search({ mutate }) {
                         required
                         value={info.district}
                         onChange={(e) => setInfo({ ...info, district: e.value })}
+                    />
+                </div>
+
+                <div className="relative">
+                    <Select
+                        id="group"
+                        placeholder="Enter District"
+                        instanceId="group"
+                        options={filteredUpazila()}
+                        onChange={(e) => setInfo({ ...info, upazila: e.value })}
+                    />
+                    <input
+                        type="text"
+                        className="w-full opacity-0 -z-50 h-full absolute top-0 left-0"
+                        required
+                        value={info.upazila}
+                        onChange={(e) => setInfo({ ...info, upazila: e.value })}
                     />
                 </div>
 

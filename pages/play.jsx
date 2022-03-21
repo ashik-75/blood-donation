@@ -1,7 +1,12 @@
 import React from 'react';
+import Racket from '../components/Racket';
 
 const play = () => {
-    return <div>play</div>;
+    return (
+        <div>
+            <Racket />
+        </div>
+    );
 };
 
 export default play;

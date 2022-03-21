@@ -16,6 +16,10 @@ const donarSchema = new mongoose.Schema(
         lat: String,
         group: String,
         gender: String,
+        hide: {
+            type: Boolean,
+            default: false,
+        },
         password: {
             type: String,
         },

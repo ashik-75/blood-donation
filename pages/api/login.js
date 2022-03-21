@@ -18,12 +18,16 @@ const loginDonar = async (req, res) => {
 
         if (donar) {
             const isMatched = await isPasswordMatch(password, donar.password);
-            const { password: test, ...info } = donar._doc;
+            const { password: secret, ...info } = donar._doc;
 
             if (isMatched) {
                 res.json({
                     donar: info,
-                    token: generateToken(info),
+                    token: generateToken({
+                        id: donar._id,
+                        name: donar.name,
+                        isAdmin: donar.isAdmin,
+                    }),
                 });
             } else {
                 res.status(403).json({

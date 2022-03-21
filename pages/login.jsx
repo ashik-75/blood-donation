@@ -19,6 +19,7 @@ const login = () => {
     const [info, setInfo] = useState({ phone: '', password: '' });
     const { mutate, data, isError, error, status } = useMutation(loginReq);
 
+    console.log({ data, isError, error, status });
     const { token } = useSelector((state) => state.donar);
     const router = useRouter();
 
@@ -33,17 +34,17 @@ const login = () => {
     };
 
     useEffect(() => {
-        if (token) {
-            router.push('/');
-        }
         if (isError) {
             toast.error(error?.response?.data?.message);
         }
 
         if (status === 'success') {
-            toast.success('Login Successfully Completed!');
             dispatch(donarLogin(data?.data));
-            router.push('/');
+            if (token) {
+                toast.success('Login Successfully Completed!');
+
+                router.push('/');
+            }
         }
     }, [isError, status, token]);
 

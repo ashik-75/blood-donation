@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import UpdateDonationDate from '../components/UpdateDonationDate';
 
 function Profiledetails({ donar }) {
     return (
@@ -24,10 +25,10 @@ function Profiledetails({ donar }) {
 
             <div className="my-3">
                 <div className="text-sm text-slate-400">Last time of blood donation</div>
-                <div className="text-lg text-slate-700 tracking-wide font-bold">
-                    {donar?.lat?.split('T')[0]}
-                </div>
+                <div className="text-lg text-slate-700 tracking-wide font-bold">{donar?.lat}</div>
             </div>
+
+            <UpdateDonationDate />
         </div>
     );
 }

@@ -2,7 +2,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useMutation } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -14,6 +13,7 @@ import district from '../data/district';
 import group from '../data/group';
 import upazila from '../data/upazila';
 import { donarLogin } from '../store/donar';
+import formatDate from '../utils/formatDate';
 
 const addDonar = (info) => {
     return axios.post('/api/registerdonar', info, {
@@ -37,6 +37,7 @@ const register = () => {
     const dispatch = useDispatch();
     const [districtValue, setDistrictValue] = useState({});
     const { token } = useSelector((state) => state.donar);
+    const [isHidePhone, setIsHidePhone] = useState(false);
 
     const [info, setInfo] = useState({
         name: '',
@@ -49,12 +50,26 @@ const register = () => {
         group: '',
         password: '',
         confirmPassword: '',
+        hide: false,
     });
 
     const { data, status, mutate, isError, error } = useMutation(addDonar);
 
     const handleValue = (e) => {
-        setInfo({ ...info, [e.target.name]: e.target.value });
+        if (e.target.name === 'gender' && e.target.value === 'female') {
+            setIsHidePhone(true);
+        }
+        if (e.target.name === 'gender' && e.target.value === 'male') {
+            setIsHidePhone(false);
+        }
+
+        if (e.target.name === 'hide') {
+            setInfo({ ...info, [e.target.name]: e.target.checked });
+        } else if (e.target.value === 'male') {
+            setInfo({ ...info, [e.target.name]: e.target.value, hide: false });
+        } else {
+            setInfo({ ...info, [e.target.name]: e.target.value });
+        }
     };
 
     const filteredUpazila = () => {
@@ -69,7 +84,7 @@ const register = () => {
         } else if (info.password !== info.confirmPassword) {
             toast.error('Password Not Match');
         } else {
-            mutate(info);
+            mutate({ ...info, lat: formatDate(info.lat) });
         }
     };
 
@@ -130,16 +145,7 @@ const register = () => {
                         label: 'Address',
                     }}
                 />
-                {/* <InputField
-                    data={{
-                        handleValue,
-                        name: 'email',
-                        id: 'email',
-                        placeholder: 'Email Address',
-                        type: 'email',
-                        label: 'Email Address',
-                    }}
-                /> */}
+
                 <InputField
                     data={{
                         handleValue,
@@ -173,7 +179,22 @@ const register = () => {
                         />
                     </div>
                 </div>
-                {/* <DateInput data={{ label: 'DOB', info, setInfo, id: 'dob' }} /> */}
+                {isHidePhone && (
+                    <div>
+                        <input
+                            id="femaleCheck"
+                            type="checkbox"
+                            checked={info.hide}
+                            name="hide"
+                            onChange={handleValue}
+                            className="mr-2 rounded checked:outline-none focus:ring-0 appearance-none form-checkbox focus:outline-none indeterminate:bg-red-300"
+                        />
+                        <label className="text-slate-600 tracking-wide " htmlFor="femaleCheck">
+                            Hide Phone
+                        </label>
+                    </div>
+                )}
+
                 <DateInput
                     data={{
                         label: 'Date of Last Blood Donation',

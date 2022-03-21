@@ -4,10 +4,10 @@ import connectDb from '../../utils/connectDB';
 
 connectDb();
 const donars = async (req, res) => {
-    const { district, group } = req.body;
+    const { district, group, upazila } = req.body;
 
     try {
-        const response = await Donar.find({ district, group });
+        const response = await Donar.find({ district, group, upazila });
 
         if (response?.length > 0) {
             res.status(200).send(response);

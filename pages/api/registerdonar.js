@@ -11,8 +11,7 @@ const hashPassword = (password) => {
 };
 
 const registerDonar = async (req, res) => {
-    const { name, email, phone, gender, dob, lat, group, password, address, upazila, district } =
-        req.body;
+    const { phone, password } = req.body;
 
     try {
         const checkPhoneNumber = await Donar.findOne({ phone });
@@ -23,26 +22,19 @@ const registerDonar = async (req, res) => {
             });
         }
         const donar = await Donar.create({
-            name,
-            email,
-            phone,
-            gender,
-            dob,
-            lat,
-            group,
-            address,
-            upazila,
-            district,
+            ...req.body,
             password: await hashPassword(password),
         });
 
         if (donar) {
             // eslint-disable-next-line no-unsafe-optional-chaining
-            const { password: sectet, ...othersInfo } = donar?._doc;
+            const { password: secret, ...othersInfo } = donar._doc;
             res.json({
                 donar: othersInfo,
                 token: generateToken({
-                    othersInfo,
+                    id: donar._id,
+                    name: donar.name,
+                    isAdmin: donar.isAdmin,
                 }),
             });
         } else {

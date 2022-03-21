@@ -128,7 +128,7 @@ const upazila = [
     { value: 'adamdighi', id: '127', label: 'Adamdighi', district_id: '14' },
     { value: 'nondigram', id: '128', label: 'Nondigram', district_id: '14' },
     { value: 'sonatala', id: '129', label: 'Sonatala', district_id: '14' },
-    { value: 'dhunot', id: '130', label: 'Dhunot', district_id: '14' },
+    { value: 'dhunat', id: '130', label: 'Dhunat', district_id: '14' },
     { value: 'gabtali', id: '131', label: 'Gabtali', district_id: '14' },
     { value: 'sherpur', id: '132', label: 'Sherpur', district_id: '14' },
     { value: 'shibganj', id: '133', label: 'Shibganj', district_id: '14' },

@@ -50,7 +50,13 @@ function DataTable({ allData }) {
                                         {dt.address}
                                     </td>
                                     <td className="p-3 whitespace-nowrap tracking-wide text-sm text-gray-700 text-left">
-                                        {dt.phone}
+                                        {dt?.hide ? (
+                                            <span className="p-1 rounded text-white bg-pink-700">
+                                                Phone Hide
+                                            </span>
+                                        ) : (
+                                            dt.phone
+                                        )}
                                     </td>
                                     <td className="p-3 whitespace-nowrap tracking-wide text-sm text-gray-700 text-left">
                                         <span className="py-1 px-2 bg-rose-600 rounded uppercase font-bold text-white">
@@ -58,7 +64,7 @@ function DataTable({ allData }) {
                                         </span>
                                     </td>
                                     <td className="p-3 whitespace-nowrap tracking-wide text-sm text-gray-700 text-left">
-                                        {dt?.lat?.split('T')[0]}
+                                        {dt?.lat}
                                     </td>
                                 </tr>
                             ))}
@@ -78,7 +84,13 @@ function DataTable({ allData }) {
                         <div className="my-3">
                             <div className="text-sm text-slate-400">Phone Number</div>
                             <div className="text-lg text-slate-700 tracking-wide font-bold">
-                                {dt.phone}
+                                {dt?.hide ? (
+                                    <span className="p-1 rounded text-white bg-pink-700">
+                                        Phone Hide
+                                    </span>
+                                ) : (
+                                    dt.phone
+                                )}
                             </div>
                         </div>
 
@@ -90,18 +102,13 @@ function DataTable({ allData }) {
                                 <span>address - {dt?.address}</span>
                             </div>
                         </div>
-                        <div className="my-3">
-                            <div className="text-sm text-slate-400">Date Of Birth</div>
-                            <div className="text-lg text-slate-700 tracking-wide font-bold">
-                                {dt?.dob?.split('T')[0]}
-                            </div>
-                        </div>
+
                         <div className="my-3">
                             <div className="text-sm text-slate-400">
                                 Last time of blood donation
                             </div>
                             <div className="text-lg text-slate-700 tracking-wide font-bold">
-                                {dt.lat && dt?.lat.split('T')[0]}
+                                {dt?.lat}
                             </div>
                         </div>
                     </div>

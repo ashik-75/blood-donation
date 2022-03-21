@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import '../styles/globals.css';
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../components/Navbar';
 import store from '../store/store';
+import '../styles/globals.css';
 
 const queryClient = new QueryClient();
 

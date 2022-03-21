@@ -53,7 +53,6 @@ function Loading() {
 function donars() {
     const { data, isError, error, isLoading } = useQuery('allDonars', allDonars);
 
-    console.log({ data, isError, error, isLoading });
     return (
         <div>
             {isLoading ? (
