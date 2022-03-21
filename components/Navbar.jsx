@@ -19,8 +19,10 @@ function Navbar() {
 
     return (
         <div className="flex items-center justify-between px-5 shadow-lg sticky top-0 left-0 w-full z-50 bg-white">
-            <div className="">
-                <img className="w-32" src="logo_1.png" alt="" />
+            <div className=" cursor-pointer">
+                <Link href="/">
+                    <img className="w-32" src="logo_1.png" alt="" />
+                </Link>
             </div>
 
             <div className=" space-x-4 hidden md:flex">
@@ -105,7 +107,7 @@ function Navbar() {
                         </button>
                         <div className="space-y-3">
                             <div
-                                className={`decoration-2 text-slate-500 tracking-wider font-bold underline-offset-4 ${
+                                className={`decoration-2 text-xl  tracking-wider font-bold underline-offset-4 ${
                                     router.pathname === '/' && 'underline'
                                 }`}
                                 onClick={() => setSelected(false)}
@@ -114,7 +116,7 @@ function Navbar() {
                             </div>
 
                             <div
-                                className={`text-slate-500 tracking-wider decoration-2 font-bold underline-offset-4 ${
+                                className={` tracking-wider text-xl decoration-2 font-bold underline-offset-4 ${
                                     router.pathname === '/donars' && 'underline'
                                 }`}
                                 onClick={() => setSelected(false)}
@@ -124,7 +126,7 @@ function Navbar() {
                             {token ? (
                                 <>
                                     <div
-                                        className={`text-slate-500 tracking-wider decoration-2 font-bold underline-offset-4 ${
+                                        className={` tracking-wider decoration-2 text-xl font-bold underline-offset-4 ${
                                             router.pathname === '/profile' && 'underline'
                                         }`}
                                         onClick={() => setSelected(false)}
@@ -136,7 +138,7 @@ function Navbar() {
                                             handleLogout();
                                             setSelected(false);
                                         }}
-                                        className="px-4 bg-pink-500 py-.5 text-white cursor-pointer text-sm py-1 rounded font-bold"
+                                        className="px-4 bg-pink-500 py-.5 text-xl text-white cursor-pointer text-sm py-1 rounded font-bold"
                                     >
                                         Logout
                                     </div>
@@ -144,7 +146,7 @@ function Navbar() {
                             ) : (
                                 <>
                                     <div
-                                        className={`text-slate-500 tracking-wider decoration-2 font-bold underline-offset-4 ${
+                                        className={` tracking-wider text-xl decoration-2 font-bold underline-offset-4 ${
                                             router.pathname === '/login' && 'underline'
                                         }`}
                                         onClick={() => setSelected(false)}
@@ -152,7 +154,7 @@ function Navbar() {
                                         <Link href="/login">Login</Link>
                                     </div>
                                     <div
-                                        className={`text-slate-500 tracking-wider decoration-2 underline-offset-4 font-bold ${
+                                        className={` tracking-wider text-xl decoration-2 underline-offset-4 font-bold ${
                                             router.pathname === '/register' && 'underline'
                                         }`}
                                         onClick={() => setSelected(false)}
