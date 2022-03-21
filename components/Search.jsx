@@ -56,7 +56,7 @@ function Search({ mutate }) {
                 <div className="relative">
                     <Select
                         id="group"
-                        placeholder="Enter District"
+                        placeholder="Enter Upazila"
                         instanceId="group"
                         options={filteredUpazila()}
                         onChange={(e) => setInfo({ ...info, upazila: e.value })}
