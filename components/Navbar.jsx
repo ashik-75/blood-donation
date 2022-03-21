@@ -123,7 +123,7 @@ function Navbar() {
                             </div>
                             <div
                                 className={`decoration-2 text-xl  tracking-wider font-bold underline-offset-4 ${
-                                    router.pathname === '/' && 'underline'
+                                    router.pathname === '/about' && 'underline'
                                 }`}
                                 onClick={() => setSelected(false)}
                             >
