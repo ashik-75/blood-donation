@@ -27,7 +27,7 @@ function DataTable({ allData }) {
                                 Group
                             </th>
                             <th className="p-3 text-left text-sm -tracking-wide font-semibold">
-                                lat
+                                Last Time Blood Donation
                             </th>
                         </tr>
                     </thead>

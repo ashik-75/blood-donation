@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import store from '../store/store';
 import '../styles/globals.css';
@@ -17,7 +18,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
                 <Navbar />
-                <Component {...pageProps} />
+                <div className="min-h-[75vh]">
+                    <Component {...pageProps} />
+                </div>
+                <Footer />
 
                 <ToastContainer />
             </QueryClientProvider>

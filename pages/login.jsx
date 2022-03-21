@@ -79,7 +79,7 @@ const login = () => {
                     />
                 </div>
                 <button
-                    className="w-full bg-pink-700 font-bold text-white rounded py-2 px-4"
+                    className="w-full active:scale-105 bg-pink-700 font-bold text-white rounded py-2 px-4"
                     type="submit"
                 >
                     Login

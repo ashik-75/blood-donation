@@ -7,7 +7,10 @@ import Select from 'react-select';
 function SelectInput({ data: { payload, setInfo, info, label, id, setDistrictValue } }) {
     return (
         <div>
-            <label className="block mb-2" htmlFor="bloodGroup">
+            <label
+                className="block mb-2 after:content-['*'] after:ml-1 after:text-rose-800"
+                htmlFor="bloodGroup"
+            >
                 {label}
             </label>
             <div className="relative">

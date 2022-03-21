@@ -18,20 +18,27 @@ function Navbar() {
     };
 
     return (
-        <div className="flex items-center justify-between px-5 shadow-lg sticky top-0 left-0 w-full z-50 bg-white">
+        <div className="flex items-center justify-between px-5 py-2 shadow-lg sticky top-0 left-0 w-full z-50 bg-white">
             <div className=" cursor-pointer">
                 <Link href="/">
-                    <img className="w-32" src="logo_1.png" alt="" />
+                    <img className="h-20" src="logo-2.png" alt="" />
                 </Link>
             </div>
 
-            <div className=" space-x-4 hidden md:flex">
+            <div className=" space-x-8 hidden md:flex">
                 <div
                     className={`decoration-2 text-slate-500 tracking-wider font-bold underline-offset-4 ${
                         router.pathname === '/' && 'underline'
                     }`}
                 >
                     <Link href="/">Home</Link>
+                </div>
+                <div
+                    className={`decoration-2 text-slate-500 tracking-wider font-bold underline-offset-4 ${
+                        router.pathname === '/about' && 'underline'
+                    }`}
+                >
+                    <Link href="/about">About</Link>
                 </div>
 
                 <div
@@ -96,7 +103,7 @@ function Navbar() {
                                 duration: 1,
                             },
                         }}
-                        className="flex justify-center items-center top-0 right-0 md:hidden absolute w-[70%] h-[100vh] bg-slate-300"
+                        className="flex text-slate-600 justify-center items-center top-0 right-0 md:hidden absolute w-[70%] h-[100vh] bg-white"
                     >
                         <button
                             className="absolute top-4 right-3 bg-gray-100 rounded-full py-2 px-2 w-12 h-12"
@@ -113,6 +120,14 @@ function Navbar() {
                                 onClick={() => setSelected(false)}
                             >
                                 <Link href="/">Home</Link>
+                            </div>
+                            <div
+                                className={`decoration-2 text-xl  tracking-wider font-bold underline-offset-4 ${
+                                    router.pathname === '/' && 'underline'
+                                }`}
+                                onClick={() => setSelected(false)}
+                            >
+                                <Link href="/about">About</Link>
                             </div>
 
                             <div

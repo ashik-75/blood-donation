@@ -89,7 +89,7 @@ function Search({ mutate }) {
                 </div>
 
                 <button
-                    className="bg-cyan-700 text-lg tracking-wider uppercase font-bold text-white rounded py-2 px-4 w-full"
+                    className="bg-cyan-700 active:scale-105  tracking-wider uppercase font-bold text-white rounded py-2 px-4 w-full"
                     type="submit"
                 >
                     Search

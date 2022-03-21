@@ -53,7 +53,7 @@ const register = () => {
         hide: false,
     });
 
-    const { data, status, mutate, isError, error } = useMutation(addDonar);
+    const { data, status, mutate, isError, error, isLoading } = useMutation(addDonar);
 
     const handleValue = (e) => {
         if (e.target.name === 'gender' && e.target.value === 'female') {
@@ -157,7 +157,7 @@ const register = () => {
                     }}
                 />
                 <div>
-                    <div>Gender</div>
+                    <div className="after:content-['*'] after:ml-1 after:text-rose-800">Gender</div>
                     <div className="space-x-3">
                         <RadioInput
                             data={{
@@ -229,10 +229,10 @@ const register = () => {
                     }}
                 />
                 <button
-                    className="w-full bg-purple-700 font-bold text-white rounded py-2 px-4"
+                    className="w-full bg-purple-700 active:scale-105 font-bold text-white rounded py-2 px-4"
                     type="submit"
                 >
-                    Registration
+                    Registration {isLoading && '...'}
                 </button>
             </form>
         </div>
