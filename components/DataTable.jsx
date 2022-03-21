@@ -82,8 +82,17 @@ function DataTable({ allData }) {
                                 {dt.name}
                             </div>
                         </div>
+
                         <div className="my-3">
-                            <div className="text-sm text-slate-400">Phone Number</div>
+                            <div className="text-sm text-slate-400">Blood Group</div>
+                            <div className="text-lg text-slate-700 tracking-wide font-bold">
+                                <span className="px-1 uppercase py-1 rounded text-white bg-pink-700">
+                                    {dt?.group}
+                                </span>
+                            </div>
+                        </div>
+                        <div className="my-3">
+                            <div className="text-sm text-slate-400 mb-1">Phone Number</div>
                             <div className="text-lg text-slate-700 tracking-wide font-bold">
                                 {dt?.hide ? (
                                     <span className="p-1 rounded text-white bg-pink-700">
