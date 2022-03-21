@@ -19,7 +19,6 @@ const login = () => {
     const [info, setInfo] = useState({ phone: '', password: '' });
     const { mutate, data, isError, error, status } = useMutation(loginReq);
 
-    console.log({ data, isError, error, status });
     const { token } = useSelector((state) => state.donar);
     const router = useRouter();
 
