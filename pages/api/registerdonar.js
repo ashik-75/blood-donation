@@ -20,27 +20,28 @@ const registerDonar = async (req, res) => {
             res.status(409).json({
                 message: 'This phone number has already been taken,Use New One!',
             });
-        }
-        const donar = await Donar.create({
-            ...req.body,
-            password: await hashPassword(password),
-        });
-
-        if (donar) {
-            // eslint-disable-next-line no-unsafe-optional-chaining
-            const { password: secret, ...othersInfo } = donar._doc;
-            res.json({
-                donar: othersInfo,
-                token: generateToken({
-                    id: donar._id,
-                    name: donar.name,
-                    isAdmin: donar.isAdmin,
-                }),
-            });
         } else {
-            res.status(500).json({
-                message: 'Server Problem',
+            const donar = await Donar.create({
+                ...req.body,
+                password: await hashPassword(password),
             });
+
+            if (donar) {
+                // eslint-disable-next-line no-unsafe-optional-chaining
+                const { password: secret, ...othersInfo } = donar._doc;
+                res.json({
+                    donar: othersInfo,
+                    token: generateToken({
+                        id: donar._id,
+                        name: donar.name,
+                        isAdmin: donar.isAdmin,
+                    }),
+                });
+            } else {
+                res.status(500).json({
+                    message: 'Server Problem,Please try again later!',
+                });
+            }
         }
     } catch (error) {
         res.status(500).json({

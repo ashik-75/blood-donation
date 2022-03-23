@@ -5,6 +5,14 @@ import Select from 'react-select';
 // import '../styles/dropdown.css';
 
 function SelectInput({ data: { payload, setInfo, info, label, id, setDistrictValue } }) {
+    const style = {
+        control: (base) => ({
+            ...base,
+            border: '1px solid #3d3c3a',
+            // This line disable the blue border
+            boxShadow: 'none',
+        }),
+    };
     return (
         <div>
             <label
@@ -15,7 +23,7 @@ function SelectInput({ data: { payload, setInfo, info, label, id, setDistrictVal
             </label>
             <div className="relative">
                 <Select
-                    className="relative border-[1px] border-slate-500 rounded"
+                    className="relative  rounded"
                     id={id}
                     instanceId={id}
                     options={payload}
@@ -25,6 +33,7 @@ function SelectInput({ data: { payload, setInfo, info, label, id, setDistrictVal
                             setDistrictValue(e);
                         }
                     }}
+                    styles={style}
                 />
                 <input
                     className="absolute top-0 left-0 w-[100%] h-[100%] -z-50 opacity-0"

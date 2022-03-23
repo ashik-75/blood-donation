@@ -24,9 +24,9 @@ const loginDonar = async (req, res) => {
                 res.json({
                     donar: info,
                     token: generateToken({
-                        id: donar._id,
-                        name: donar.name,
-                        isAdmin: donar.isAdmin,
+                        id: donar?._id,
+                        name: donar?.name,
+                        isAdmin: donar?.isAdmin,
                     }),
                 });
             } else {

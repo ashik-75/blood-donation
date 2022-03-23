@@ -1,16 +1,11 @@
 /* eslint-disable no-underscore-dangle */
-import jwt from 'jsonwebtoken';
-import Donar from '../../../model/Donar';
 
-const verifyToken = (token) => {
-    const donar = jwt.verify(token, process.env.jwt_secret);
-    if (donar) return donar;
-    return null;
-};
+import Donar from '../../../model/Donar';
+import extractToken from '../../../utils/extractToken';
+import verifyToken from '../../../utils/verifyToken';
 
 const update = async (req, res) => {
-    // console.log({ data });
-    const token = req?.headers?.authorization && req?.headers?.authorization?.split(' ')[1];
+    const token = extractToken(req.headers);
 
     if (token) {
         const response = verifyToken(token);
@@ -35,7 +30,7 @@ const update = async (req, res) => {
             }
         } else {
             res.status(401).json({
-                message: 'Invalid Request',
+                message: 'Invalid Request,Please Login!',
             });
         }
     } else {

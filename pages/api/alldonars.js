@@ -5,13 +5,13 @@ connectDb();
 
 const alldonars = async (req, res) => {
     try {
-        const donars = await Donar.find();
+        const donars = await Donar.find().sort({ updatedAt: -1 }).select('-password');
 
         if (donars.length > 0) {
             res.status(200).send(donars);
         } else {
             res.status(404).json({
-                message: 'No Donars available',
+                message: 'No More Donors available Right Now!',
             });
         }
     } catch (error) {

@@ -39,4 +39,13 @@ export const donarLogin = (data) => (dispatch) => {
     });
 };
 
+export const donarLogout = () => (dispatch) => {
+    if (window !== 'undefined') {
+        localStorage.removeItem('donar');
+    }
+    dispatch({
+        type: REMOVE_DONAR.type,
+    });
+};
+
 export default donarReducer;

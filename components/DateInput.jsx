@@ -10,7 +10,7 @@ function DateInput({ data: { info, setInfo, label, id } }) {
             <DatePicker
                 placeholderText="DD - MM - YYYY"
                 dateFormat="dd-MM-yyyy"
-                className="w-full rounded"
+                className="w-full rounded cursor-pointer"
                 selected={info[id]}
                 onChange={(date) => {
                     setInfo({ ...info, [id]: date });

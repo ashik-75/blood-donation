@@ -15,6 +15,7 @@ function Navbar() {
     const handleLogout = () => {
         localStorage.removeItem('donar');
         dispatch({ type: REMOVE_DONAR.type });
+        router.push('/login');
     };
 
     return (
@@ -33,20 +34,21 @@ function Navbar() {
                 >
                     <Link href="/">Home</Link>
                 </div>
-                <div
-                    className={`decoration-2 text-slate-500 tracking-wider font-bold underline-offset-4 ${
-                        router.pathname === '/about' && 'underline'
-                    }`}
-                >
-                    <Link href="/about">About</Link>
-                </div>
 
                 <div
                     className={`text-slate-500 tracking-wider decoration-2 font-bold underline-offset-4 ${
                         router.pathname === '/donars' && 'underline'
                     }`}
                 >
-                    <Link href="/donars">Donars</Link>
+                    <Link href="/donars">Donors</Link>
+                </div>
+
+                <div
+                    className={`decoration-2 text-slate-500 tracking-wider font-bold underline-offset-4 ${
+                        router.pathname === '/about' && 'underline'
+                    }`}
+                >
+                    <Link href="/about">About</Link>
                 </div>
 
                 {token ? (
@@ -56,7 +58,7 @@ function Navbar() {
                                 router.pathname === '/profile' && 'underline'
                             }`}
                         >
-                            <Link href="/profile">Profile</Link>
+                            <Link href="/profile?info=profile">Profile</Link>
                         </div>
 
                         <div onClick={handleLogout}>
@@ -121,14 +123,6 @@ function Navbar() {
                             >
                                 <Link href="/">Home</Link>
                             </div>
-                            <div
-                                className={`decoration-2 text-xl  tracking-wider font-bold underline-offset-4 ${
-                                    router.pathname === '/about' && 'underline'
-                                }`}
-                                onClick={() => setSelected(false)}
-                            >
-                                <Link href="/about">About</Link>
-                            </div>
 
                             <div
                                 className={` tracking-wider text-xl decoration-2 font-bold underline-offset-4 ${
@@ -136,7 +130,16 @@ function Navbar() {
                                 }`}
                                 onClick={() => setSelected(false)}
                             >
-                                <Link href="/donars">Donars</Link>
+                                <Link href="/donars">Donors</Link>
+                            </div>
+
+                            <div
+                                className={`decoration-2 text-xl  tracking-wider font-bold underline-offset-4 ${
+                                    router.pathname === '/about' && 'underline'
+                                }`}
+                                onClick={() => setSelected(false)}
+                            >
+                                <Link href="/about">About</Link>
                             </div>
                             {token ? (
                                 <>
@@ -146,7 +149,7 @@ function Navbar() {
                                         }`}
                                         onClick={() => setSelected(false)}
                                     >
-                                        <Link href="/profile">Profile</Link>
+                                        <Link href="/profile?info=profile">Profile</Link>
                                     </div>
                                     <div
                                         onClick={() => {

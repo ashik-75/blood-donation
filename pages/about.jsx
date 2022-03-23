@@ -1,12 +1,27 @@
 /* eslint-disable react/no-unescaped-entities */
+import { motion } from 'framer-motion';
 import React from 'react';
 
 function About() {
     return (
-        <div className="p-10">
+        <motion.div
+            initial={{
+                opacity: 0,
+            }}
+            animate={{
+                opacity: 1,
+                transition: {
+                    duration: 1,
+                },
+            }}
+            exit={{
+                opacity: 0,
+            }}
+            className="p-5 md:p-10"
+        >
             <div className="shadow-lg space-y-10 p-5 md:p-10">
                 <div className="font-bold text-lg text-justify">
-                    আমরা ধুনটবাসী" সংগঠন কর্তৃক পরিচালিত স্বেচ্ছায় রক্তদান সংগঠন "লাল ভালোবাসা
+                    "আমরা ধুনটবাসী" সংগঠন কর্তৃক পরিচালিত স্বেচ্ছায় রক্তদান সংগঠন "লাল ভালোবাসা"
                 </div>
 
                 <div className="mb-5 space-y-3">
@@ -30,7 +45,7 @@ function About() {
                     </span>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

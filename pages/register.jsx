@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
@@ -228,12 +229,15 @@ const register = () => {
                         label: 'Confirm Password',
                     }}
                 />
-                <button
+                <motion.button
+                    whileTap={{
+                        scale: 0.95,
+                    }}
                     className="w-full bg-purple-700 active:scale-105 font-bold text-white rounded py-2 px-4"
                     type="submit"
                 >
                     Registration {isLoading && '...'}
-                </button>
+                </motion.button>
             </form>
         </div>
     );

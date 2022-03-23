@@ -1,11 +1,11 @@
 import React from 'react';
 
-function InputField({ data: { type, name, id, placeholder, handleValue, label } }) {
+function InputField({ data: { type, name, id, placeholder, handleValue, label, value } }) {
     return (
         <div>
             <label
                 className="block mb-2 after:content-['*'] after:ml-1 after:text-rose-800"
-                htmlFor="name"
+                htmlFor={id}
             >
                 {label}
             </label>
@@ -16,6 +16,7 @@ function InputField({ data: { type, name, id, placeholder, handleValue, label } 
                 name={name}
                 placeholder={placeholder}
                 onChange={handleValue}
+                value={value}
                 required
             />
         </div>

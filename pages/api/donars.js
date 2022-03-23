@@ -7,7 +7,9 @@ const donars = async (req, res) => {
     const { district, group, upazila } = req.body;
 
     try {
-        const response = await Donar.find({ district, group, upazila });
+        const response = await Donar.find({ district, group, upazila })
+            .sort({ updatedAt: -1 })
+            .select('-password');
 
         if (response?.length > 0) {
             res.status(200).send(response);
@@ -17,7 +19,9 @@ const donars = async (req, res) => {
             });
         }
     } catch (error) {
-        throw new Error(error.message);
+        res.status(500).json({
+            message: error.message,
+        });
     }
 };
 

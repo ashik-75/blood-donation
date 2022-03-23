@@ -58,11 +58,15 @@ function donars() {
             {isLoading ? (
                 <Loading />
             ) : isError ? (
-                <div>{error?.response?.data?.message}</div>
+                <div className="p-10 text-center text-lg tracking-wider text-slate-600">
+                    {error?.response?.data?.message}
+                </div>
             ) : data?.data?.length > 0 ? (
                 <DataTable allData={data?.data} />
             ) : (
-                'no Data'
+                <div className="p-10 text-center text-lg tracking-wider text-slate-600">
+                    Not Found, Please Check again later!
+                </div>
             )}
         </div>
     );

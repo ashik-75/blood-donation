@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
@@ -40,7 +41,7 @@ const login = () => {
         if (status === 'success') {
             dispatch(donarLogin(data?.data));
             if (token) {
-                toast.success('Login Successfully Completed!');
+                toast.success('You Have Successfully Logged in to Lal-Valobasha');
 
                 router.push('/');
             }
@@ -49,9 +50,12 @@ const login = () => {
 
     return (
         <div>
-            <form className="w-[80%] md:w-[50%] py-10 mx-auto space-y-2" onSubmit={handleSubmit}>
+            <form className="w-[80%] md:w-[40%] py-10 mx-auto space-y-2" onSubmit={handleSubmit}>
                 <div>
-                    <label className="block mb-2" htmlFor="phone">
+                    <label
+                        className="block mb-2 after:content-['*'] after:ml-1 after:text-pink-800"
+                        htmlFor="phone"
+                    >
                         Phone Number
                     </label>
                     <input
@@ -65,7 +69,10 @@ const login = () => {
                     />
                 </div>
                 <div>
-                    <label className="block mb-2" htmlFor="password">
+                    <label
+                        className="block mb-2 after:content-['*'] after:ml-1 after:text-pink-800"
+                        htmlFor="password"
+                    >
                         Password
                     </label>
                     <input
@@ -78,12 +85,15 @@ const login = () => {
                         required
                     />
                 </div>
-                <button
-                    className="w-full active:scale-105 bg-pink-700 font-bold text-white rounded py-2 px-4"
+                <motion.button
+                    whileTap={{
+                        scale: 0.95,
+                    }}
+                    className="w-full  bg-pink-700 font-bold text-white rounded py-2 px-4"
                     type="submit"
                 >
                     Login
-                </button>
+                </motion.button>
             </form>
         </div>
     );

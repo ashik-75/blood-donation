@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { AnimatePresence } from 'framer-motion';
 import 'react-datepicker/dist/react-datepicker.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
@@ -12,14 +13,16 @@ import '../styles/globals.css';
 const queryClient = new QueryClient();
 
 // eslint-disable-next-line react/prop-types
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps: { session, ...pageProps }, router }) {
     return (
         // eslint-disable-next-line react/jsx-filename-extension
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
                 <Navbar />
                 <div className="min-h-[75vh]">
-                    <Component {...pageProps} />
+                    <AnimatePresence exitBeforeEnter initial={false}>
+                        <Component {...pageProps} key={router.pathname} />
+                    </AnimatePresence>
                 </div>
                 <Footer />
 

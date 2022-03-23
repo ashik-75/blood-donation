@@ -1,13 +1,16 @@
-import moment from 'moment';
+// import moment from 'moment';
 import React from 'react';
 
-function Racket() {
-    const date = moment('2022-02-21').format('YYYY-DD-MM');
+function Single({ input }) {
+    return <div className="bg-sky-600 p-5">{input.label}</div>;
+}
+
+function Racket({ data }) {
     return (
-        <div>
-            <div>hey baby you can play racket</div>
-            <div>momemt check</div>
-            <div>{date}</div>
+        <div className="grid grid-cols-3 gap-5">
+            {data.map((dt) => (
+                <Single input={dt} />
+            ))}
         </div>
     );
 }
