@@ -105,7 +105,7 @@ function DataTable({ allData }) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 p-5 md:hidden gap-5 ">
                 {allData.map((dt) => (
-                    <div key={dt?._id} className="p-5 shadow-lg mt-10 capitalize">
+                    <div key={dt?._id} className="p-5 shadow-lg mt-10 capitalize overflow-hidden">
                         <div className="my-3">
                             <div className="text-sm text-slate-400">Name</div>
                             <div className="text-lg text-slate-700 tracking-wide font-bold">
