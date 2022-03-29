@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
@@ -24,6 +24,7 @@ const updateDonarInfo = ({ info, token }) => {
 };
 
 function UpdateInfo({ donar }) {
+    const [show, setShow] = useState(false);
     const [info, setInfo] = useState({});
     const [districtValue, setDistrictValue] = useState({});
 
@@ -154,7 +155,36 @@ function UpdateInfo({ donar }) {
                     </motion.button>
                 </form>
 
-                <DeleteAccount id={donar?._id} />
+                <AnimatePresence>
+                    {!show && (
+                        <motion.button
+                            initial={{
+                                opacity: 0,
+                            }}
+                            animate={{
+                                opacity: 1,
+                                transition: {
+                                    duration: 1,
+                                },
+                            }}
+                            exit={{
+                                opacity: 0,
+                                transition: {
+                                    duration: 1,
+                                },
+                            }}
+                            onClick={() => setShow(true)}
+                            className="bg-rose-600 w-full mt-5 py-2 px-4 rounded text-white"
+                            type="button"
+                        >
+                            Delete Account
+                        </motion.button>
+                    )}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {show && <DeleteAccount setShow={setShow} id={donar?._id} />}
+                </AnimatePresence>
             </div>
         </motion.div>
     );

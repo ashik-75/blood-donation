@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+// import 'flowbite';
 import { AnimatePresence } from 'framer-motion';
 import 'react-datepicker/dist/react-datepicker.css';
 import { QueryClient, QueryClientProvider } from 'react-query';

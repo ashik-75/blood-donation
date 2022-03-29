@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
@@ -95,6 +96,13 @@ const login = () => {
                     Login
                 </motion.button>
             </form>
+            <div className="text-center">
+                <Link href="/register" passHref>
+                    <span className="tracking-wider text-violet-600 hover:underline underline-offset-2 cursor-pointer">
+                        Need An Account? please Register.
+                    </span>
+                </Link>
+            </div>
         </div>
     );
 };
