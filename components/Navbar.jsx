@@ -105,7 +105,7 @@ function Navbar() {
                                 duration: 1,
                             },
                         }}
-                        className="flex text-slate-600 justify-center items-center top-0 right-0 md:hidden absolute w-[70%] h-[100vh] bg-white"
+                        className="flex text-slate-600 justify-center items-center top-0 right-0 md:hidden absolute w-[70%] h-[100vh] bg-slate-100"
                     >
                         <button
                             className="absolute top-4 right-3 bg-gray-100 rounded-full py-2 px-2 w-12 h-12"
