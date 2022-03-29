@@ -35,7 +35,7 @@ function UpdateInfo({ donar }) {
     const { mutate, isError, error, data, isSuccess } = useMutation(updateDonarInfo);
 
     const handleValue = (e) => {
-        setInfo({ ...info, [e.target.name]: e.target.checked });
+        setInfo({ ...info, [e.target.name]: e.target.value });
     };
 
     useEffect(() => {
