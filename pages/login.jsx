@@ -19,7 +19,7 @@ const loginReq = (info) => {
 const login = () => {
     const dispatch = useDispatch();
     const [info, setInfo] = useState({ phone: '', password: '' });
-    const { mutate, data, isError, error, status } = useMutation(loginReq);
+    const { mutate, data, isError, error, status, isLoading } = useMutation(loginReq);
 
     const { token } = useSelector((state) => state.donar);
     const router = useRouter();
@@ -93,7 +93,7 @@ const login = () => {
                     className="w-full  bg-pink-700 font-bold text-white rounded py-2 px-4"
                     type="submit"
                 >
-                    Login
+                    Login {isLoading && 'Processing...'}
                 </motion.button>
             </form>
             <div className="text-center">

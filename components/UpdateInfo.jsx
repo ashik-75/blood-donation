@@ -32,7 +32,7 @@ function UpdateInfo({ donar }) {
     const dispatch = useDispatch();
     const queryClient = useQueryClient();
     const router = useRouter();
-    const { mutate, isError, error, data, isSuccess } = useMutation(updateDonarInfo);
+    const { mutate, isError, error, data, isSuccess, isLoading } = useMutation(updateDonarInfo);
 
     const handleValue = (e) => {
         setInfo({ ...info, [e.target.name]: e.target.value });
@@ -151,7 +151,7 @@ function UpdateInfo({ donar }) {
                         type="submit"
                         className="w-full active:scale-105 py-2 px-4 rounded bg-teal-700 text-white font-bold"
                     >
-                        Update Info
+                        Update Info {isLoading && 'Processing...'}
                     </motion.button>
                 </form>
 

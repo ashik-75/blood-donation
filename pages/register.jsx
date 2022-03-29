@@ -236,7 +236,7 @@ const register = () => {
                     className="w-full bg-purple-700 active:scale-105 font-bold text-white rounded py-2 px-4"
                     type="submit"
                 >
-                    Registration {isLoading && '...'}
+                    Registration {isLoading && 'Processing...'}
                 </motion.button>
             </form>
         </div>
