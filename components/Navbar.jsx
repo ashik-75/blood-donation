@@ -22,7 +22,7 @@ function Navbar() {
         <div className="flex items-center justify-between px-5 py-2 shadow-lg sticky top-0 left-0 w-full z-50 bg-white">
             <div className=" cursor-pointer">
                 <Link href="/">
-                    <img className="h-20" src="logo-2.png" alt="" />
+                    <img className="h-[40px] md:h-20" src="logo-2.png" alt="" />
                 </Link>
             </div>
 

@@ -33,7 +33,7 @@ function Search({ mutate }) {
                 Search Blood
             </div>
             <div className="text-center mb-5">
-                <img className="w-32" src="/blod.png" alt="" />
+                <img className=" w-20 md:w-32" src="/blod.png" alt="" />
             </div>
 
             <form className="w-[80%] md:w-[40%] mx-auto space-y-2" onSubmit={handleSubmit}>
